@@ -10,11 +10,11 @@ public class MenuState extends State {
 
     private Texture background;
     private Texture playBtn;
-    GameStateManager gsm;
+//    GameStateManager gsm;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        this.gsm = gsm;
+//        this.gsm = gsm;
         background = new Texture("background.png");
         playBtn = new Texture("playbtn.png");
     }
@@ -23,7 +23,6 @@ public class MenuState extends State {
     public void handleInput() {
         if (Gdx.input.justTouched()){
             gsm.set(new PlayState(gsm));
-            dispose();
         }
 
     }

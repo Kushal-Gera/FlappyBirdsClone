@@ -8,12 +8,12 @@ abstract public class State {
 
     protected OrthographicCamera cam;
     protected Vector3 mouse;
-    protected GameStateManager manager;
+    protected GameStateManager gsm;
 
 
     protected State(GameStateManager manager){
 
-        this.manager = manager;
+        this.gsm = manager;
         cam = new OrthographicCamera();
         mouse = new Vector3();
 
