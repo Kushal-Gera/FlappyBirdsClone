@@ -48,7 +48,6 @@ public class PlayState extends State {
         if (Gdx.input.justTouched()){
             bird.jump();
         }
-
     }
 
     @Override
@@ -66,7 +65,7 @@ public class PlayState extends State {
             }
 
             if (tube.collides(bird.getBounds()))
-                gsm.set(new PlayState(gsm));
+                gsm.set(new GameOverState(gsm));
         }
 
         if (bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){
