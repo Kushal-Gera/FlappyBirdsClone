@@ -1,5 +1,7 @@
 package kushal.application.flappy.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -13,17 +15,19 @@ public class Bird {
     private Vector3 velocity;
 
     private Rectangle bounds;
+    private Sound flap;
 
     private Texture texture;
     private Animations birdAnimation;
 
     public Bird(int x, int y) {
+        flap = Gdx.audio.newSound(Gdx.files.internal("sound.ogg"));
 
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         texture = new Texture("birdanimation.png");
         birdAnimation = new Animations(new TextureRegion(texture), 3, 0.5f);
-        bounds = new Rectangle(x, y, texture.getWidth()/3, texture.getHeight());
+        bounds = new Rectangle(x, y, texture.getWidth() / 3, texture.getHeight());
 
     }
 
@@ -46,7 +50,7 @@ public class Bird {
             velocity.add(0, GRAVITY, 0);
 
         velocity.scl(dt);
-        position.add(MOVEMENT*dt, velocity.y, 0);
+        position.add(MOVEMENT * dt, velocity.y, 0);
         if (position.y < 0)
             position.y = 0;
 
@@ -57,14 +61,16 @@ public class Bird {
 
     public void jump() {
         velocity.y = 250;
+        flap.play(0.25f);
     }
 
     public Rectangle getBounds() {
         return bounds;
     }
 
-    public void dispose(){
+    public void dispose() {
         texture.dispose();
+        flap.dispose();
     }
 
 

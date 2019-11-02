@@ -37,7 +37,7 @@ public class GameOverState extends State {
         sb.setProjectionMatrix(cam.combined);
         sb.begin();
         sb.draw(background, 0,0);
-        sb.draw(gameOver, cam.position.x - gameOver.getWidth()/2, cam.position.y);
+        sb.draw(gameOver, cam.position.x - gameOver.getWidth()/2, cam.position.y+50);
         sb.end();
     }
 
